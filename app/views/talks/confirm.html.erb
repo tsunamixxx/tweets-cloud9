@@ -1,0 +1,23 @@
+<h1 class= "background">以下の内容で、送信する</h1>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2 col-sm-10">
+            <%= form_for(@talk) do |f| %>
+                <%= f.hidden_field :content %>
+                <table class="table">
+                <tr><td>ツイート内容</td></tr>
+                <tr><td><%= @talk.content %></td></tr>
+                </table>
+                <div class="center mb-20">
+                <%= f.submit "登録する", class: 'btn btn-primary' %>
+                </div>
+            <% end %>
+        </div>
+    </div>
+    <%= form_for(@talk, url: new_talk_path, method: 'get') do |f| %>
+        <%= f.hidden_field :content %>
+        <div class="center">
+            <%= f.submit "戻る", name: 'back', class: 'btn btn-primary' %>
+        </div>
+    <% end %>
+</div>

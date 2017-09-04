@@ -1,0 +1,18 @@
+<h1 class= "background">Tweets List</h1>
+<div class="container-fluid">
+    <div class="center">
+        <div class="btn"><%= link_to "ツイートする", new_talk_path, class: 'btn btn-primary' %></div>
+    </div>
+    <div class="col-md-8 col-md-offset-2 col-sm-10">
+        <p><%= notice %></p>
+        <% @talks.each do |talk| %>
+            <div class="card">
+                <ul>
+                    <li>ツイート内容：<%= talk.content %></li>
+                </ul>
+                <%= link_to "ツイートを編集する", edit_talk_path(talk.id), data: {confirm: '本当に編集してもいいですか？'}, class: 'btn btn-primary' %>
+                <%= link_to "ツイートを削除する", talk_path(talk.id), data: {confirm: '本当に削除してもいいですか？'}, method: :delete, class: 'btn btn-warning' %>
+            </div>
+        <% end %>
+    </div>
+</div>
